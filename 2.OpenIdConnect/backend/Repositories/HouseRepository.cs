@@ -59,6 +59,7 @@ public class HouseRepository
     };
 
     public List<House> GetAll() => houses;
+    public House GetHouse(int id) => houses.Single(h => h.Id == id);
 
     public void Add(House house)
     {

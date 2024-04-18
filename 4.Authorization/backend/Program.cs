@@ -28,6 +28,7 @@ builder.Services.AddAuthentication()
 var app = builder.Build();
 
 app.MapGet("/houses", [Authorize] (HouseRepository repo) => repo.GetAll());
+app.MapGet("/houses/{id:int}", [Authorize](int id, HouseRepository repo) => repo.GetHouse(id));
 app.MapPost("/houses", [Authorize] (House house, HouseRepository repo) =>
 {
     repo.Add(house);

@@ -31,11 +31,11 @@ builder.Services.AddAuthentication(o =>
     })
     .AddOpenIdConnect(options =>
     {
-        options.Authority = "https://localhost:5001";
+        options.Authority = "https://dev-o4sbhki3eu8gdt3h.us.auth0.com";
 
-        options.ClientId = "angular";
+        options.ClientId = "NMOTb2wic4ikPaLIHgnSAjTIvuQgW64y";
         //Store in application secrets
-        options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
+        options.ClientSecret = "GHzsCmGBlRG4WTVdQl5gUZAu-aWX7cdWtxvCaNq4SCXnPuivMAR7rCmLH3iY1L-6";
         options.ResponseType = "code";
     });
 

@@ -10,10 +10,7 @@ export class HouseService {
   constructor(private http: HttpClient) {}
 
   getHouses(): Observable<House[]> {
-    const httpOptions = {
-      withCredentials: true,
-    };
-    return this.http.get<House[]>('/houses', httpOptions);
+    return this.http.get<House[]>('/houses');
   }
 
   getHouse(id: number): Observable<House> {

@@ -15,6 +15,7 @@ import { UserClaim } from '../../types/userClaim';
 export class AuthenticatorComponent implements OnInit {
   nameClaim: string = '';
   authenticated: boolean = false;
+  logoutUrl: string = '';
   userClaims$: Observable<UserClaim[]> = new Observable<UserClaim[]>();
 
   constructor(private http: HttpClient) {}
@@ -23,7 +24,9 @@ export class AuthenticatorComponent implements OnInit {
     this.getUserClaims();
     this.userClaims$.subscribe((c) => {
       let claim = c.find((claim) => claim.type === 'name');
-      this.nameClaim = claim ? claim.value : '';
+      this.nameClaim = claim ? claim.value  : '';
+      let logoutClaim = c.find((claim) => claim.type === 'bff:logout_url');
+      this.logoutUrl = logoutClaim ? logoutClaim.value : '';
       this.authenticated = c.length > 0;
     });
   }

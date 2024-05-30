@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserClaim } from '../../types/userClaim';
 
 @Component({
@@ -29,8 +29,14 @@ export class AuthenticatorComponent implements OnInit {
   }
 
   getUserClaims() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-CSRF': '1',
+      }),
+    };
     this.userClaims$ = this.http.get<UserClaim[]>(
-      '/account/getUserClaims?slide=false'
+      '/account/user?slide=false',
+      httpOptions
     );
   }
 }

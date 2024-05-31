@@ -18,6 +18,7 @@ builder.Services.AddAuthentication(o =>
     {
         o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         o.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+        o.DefaultSignOutScheme = OpenIdConnectDefaults.AuthenticationScheme;
     })
     .AddCookie(o =>
     {
@@ -37,6 +38,7 @@ builder.Services.AddAuthentication(o =>
         //Store in application secrets
         options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
         options.ResponseType = "code";
+        options.SaveTokens = true;
     });
 
 var app = builder.Build();

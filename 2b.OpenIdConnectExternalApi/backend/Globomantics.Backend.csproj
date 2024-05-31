@@ -21,8 +21,8 @@
 
     <PropertyGroup>
         <SpaRoot>..\frontend\</SpaRoot>
-        <SpaClientUrl>http://localhost:3000</SpaClientUrl>
-        <SpaLaunchCommand>npm run dev</SpaLaunchCommand>
+        <SpaClientUrl>http://localhost:4200</SpaClientUrl>
+        <SpaLaunchCommand>ng serve</SpaLaunchCommand>
     </PropertyGroup>
 
 </Project>

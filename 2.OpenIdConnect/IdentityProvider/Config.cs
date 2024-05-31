@@ -24,7 +24,7 @@ public static class Config
                 RequirePkce = true,
 
                 RedirectUris = { "https://localhost:7180/signin-oidc" },
-                FrontChannelLogoutUri = "https://localhost:7180/signout-oidc",
+                BackChannelLogoutUri = "https://localhost:7180/account/backchannel",
                 PostLogoutRedirectUris = { "https://localhost:7180/signout-callback-oidc" },
 
                 AlwaysIncludeUserClaimsInIdToken = true,

@@ -45,6 +45,7 @@ public static class Config
                 AlwaysIncludeUserClaimsInIdToken = true,
                 AllowedScopes = { "openid", "profile", "globoapi" },
                 RequireConsent = true,
+                AllowOfflineAccess = true
             },
         };
 }

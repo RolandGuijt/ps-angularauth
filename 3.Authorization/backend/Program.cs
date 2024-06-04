@@ -27,7 +27,7 @@ builder.Services.AddAuthentication()
 
 var app = builder.Build();
 
-app.MapGet("/houses", [Authorize] (HouseRepository repo) => repo.GetAll());
+app.MapGet("/houses", [Authorize](HouseRepository repo) => repo.GetAll());
 app.MapGet("/houses/{id:int}", [Authorize](int id, HouseRepository repo) => repo.GetHouse(id));
 app.MapPost("/houses", [Authorize] (House house, HouseRepository repo) =>
 {
@@ -40,14 +40,6 @@ app.MapPost("houses/{id:int}/bids", [Authorize] (Bid bid, BidRepository repo) =>
 {
     repo.Add(bid);
     return Results.Created($"/houses/{bid.HouseId}/bids", bid);
-});
-
-app.MapGet("/user/authzdata", [Authorize] (UserRepository repo, ClaimsPrincipal user) =>
-{
-    var sub = user.FindFirstValue("sub");
-    if (sub is null)
-        return [];
-    return repo.GetAuthzData(sub);
 });
 
 app.MapControllers();

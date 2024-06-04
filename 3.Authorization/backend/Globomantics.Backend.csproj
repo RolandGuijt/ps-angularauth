@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -12,8 +11,8 @@
 
   <PropertyGroup>
     <SpaRoot>..\frontend\</SpaRoot>
-    <SpaClientUrl>http://localhost:3000</SpaClientUrl>
-    <SpaLaunchCommand>npm run dev</SpaLaunchCommand>
+    <SpaClientUrl>http://localhost:4200</SpaClientUrl>
+    <SpaLaunchCommand>ng serve</SpaLaunchCommand>
   </PropertyGroup>
 
 </Project>

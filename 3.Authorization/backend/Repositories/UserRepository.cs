@@ -4,15 +4,15 @@ namespace Globomantics.Backend.Repositories;
 
 public class UserRepository
 {
-    private List<UserModel> users =
-    [
+    private List<UserModel> users = new()
+    {
         new UserModel { Id = 3522, Name = "Roland", Password = "K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=",
-            FavoriteColor = "blue", Role = "Contributor", GoogleId = "101517359495305583936" }
-    ];
+            FavoriteColor = "blue", Role = "Admin" }
+    };
 
-    private List<UserAuthZ> userAuthZs =
+        private List<UserAuthZ> userAuthZs =
     [
-        new UserAuthZ { UserId = "3522", Type = "displayBids", Value = "true" }
+        new UserAuthZ { UserId = "3522", Type = "department", Value = "HR" }
     ];
 
     public IEnumerable<UserAuthZ> GetAuthzData(string userId)
@@ -24,12 +24,6 @@ public class UserRepository
     public UserModel? GetByUsernameAndPassword(string username, string password)
     {
         var user = users.SingleOrDefault(u => u.Name.ToLower() == username.ToLower() && u.Password == password.Sha256());
-        return user;
-    }
-
-    public UserModel? GetByGoogleId(string googleId)
-    {
-        var user = users.SingleOrDefault(u => u.GoogleId == googleId);
         return user;
     }
 }

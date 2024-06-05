@@ -1,3 +1,4 @@
+using Duende.Bff;
 using Duende.Bff.Yarp;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -9,6 +10,8 @@ builder.Services.AddSpaYarp();
 builder.Services.AddBff(o => o.ManagementBasePath = "/account")
     .AddServerSideSessions()
     .AddRemoteApis();
+
+builder.Services.AddScoped<IUserService, GloboUserService>();
 
 builder.Services.AddAuthentication(o =>
     {
@@ -29,15 +32,14 @@ builder.Services.AddAuthentication(o =>
     {
         options.Authority = "https://localhost:5001";
 
-        options.ClientId = "react";
+        options.ClientId = "angular";
         //Store in application secrets
         options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
         options.ResponseType = "code";
-        options.Scope.Add("roles");
         options.Scope.Add("globoapi");
         options.Scope.Add("authapi");
+        options.Scope.Add("offline_access");
         options.SaveTokens = true;
-        options.MapInboundClaims = false;
     });
 
 var app = builder.Build();
@@ -45,8 +47,6 @@ var app = builder.Build();
 app.UseBff();
 app.MapBffManagementEndpoints();
 app.MapRemoteBffApiEndpoint("/api", "https://localhost:7165")
-    .RequireAccessToken();
-app.MapRemoteBffApiEndpoint("/auth", "https://localhost:7280")
     .RequireAccessToken();
 app.UseSpaYarp();
 

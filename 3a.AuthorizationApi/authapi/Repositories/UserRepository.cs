@@ -4,10 +4,10 @@ public class UserRepository
 {
     private List<UserAuthZ> userAuthZs =
     [
-        new UserAuthZ { ApplicationId = 1, UserId = "1", Type = "department", 
-            Value = "HR" },
-        new UserAuthZ { ApplicationId = 1, UserId = "2", Type = "department", 
-            Value = "Sales" }
+        new UserAuthZ { ApplicationId = 1, UserId = "1", Type = "applicationrole", 
+            Value = "editor" },
+        new UserAuthZ { ApplicationId = 1, UserId = "2", Type = "applicationrole", 
+            Value = "contributor" }
     ];
 
     public IEnumerable<UserAuthZ> GetAuthzData(int applicationId, string userId)

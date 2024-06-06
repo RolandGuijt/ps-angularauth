@@ -31,7 +31,7 @@ export class AuthorizationService {
   }
 
   canSeeHouseDetails() {
-    return this.roleClaim === 'Admin';
+    return this.roleClaim === 'User';
   }
 
   canAddHouse() {

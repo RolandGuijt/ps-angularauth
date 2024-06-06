@@ -36,6 +36,7 @@ builder.Services.AddAuthentication(o =>
         //Store in application secrets
         options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
         options.ResponseType = "code";
+        options.Scope.Add("roles");
         options.Scope.Add("globoapi");
         options.Scope.Add("authapi");
         options.Scope.Add("offline_access");

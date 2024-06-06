@@ -39,6 +39,7 @@ builder.Services.AddAuthentication(o =>
         options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
         options.ResponseType = "code";
         options.SaveTokens = true;
+        //options.GetClaimsFromUserInfoEndpoint = true;
     });
 
 var app = builder.Build();

@@ -14,13 +14,15 @@ public class GloboUserService(IOptions<BffOptions> options, ILoggerFactory logge
     var token = await httpContextAccessor.HttpContext.GetTokenAsync("access_token");
     var http = httpClientFactory.CreateClient();
     http.BaseAddress = new Uri("https://localhost:7280");
-    http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+    http.DefaultRequestHeaders.Authorization = 
+      new AuthenticationHeaderValue("Bearer", token);
     var result = await http.GetAsync("/user/authzdata/1");
     result.EnsureSuccessStatusCode();
     return await result.Content.ReadFromJsonAsync<ClaimRecord[]>();
   }
 
-  protected override IEnumerable<ClaimRecord> GetUserClaims(AuthenticateResult authenticateResult)
+  protected override IEnumerable<ClaimRecord> GetUserClaims(
+    AuthenticateResult authenticateResult)
   {
     var baseClaims = base.GetUserClaims(authenticateResult);
     var extraClaims = GetAuthzData().GetAwaiter().GetResult();

@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Globomantics.Backend.Models;
 using Globomantics.Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;

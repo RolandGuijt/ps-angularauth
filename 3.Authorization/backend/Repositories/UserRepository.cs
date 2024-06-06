@@ -10,7 +10,7 @@ public class UserRepository
             FavoriteColor = "blue", Role = "Admin" }
     };
 
-        private List<UserAuthZ> userAuthZs =
+    private List<UserAuthZ> userAuthZs =
     [
         new UserAuthZ { UserId = "3522", Type = "department", Value = "HR" }
     ];
@@ -21,7 +21,7 @@ public class UserRepository
             .Where(us => us.UserId == userId);
     }
 
-    public UserModel? GetByUsernameAndPassword(string username, string password)
+    public UserModel GetByUsernameAndPassword(string username, string password)
     {
         var user = users.SingleOrDefault(u => u.Name.ToLower() == username.ToLower() && u.Password == password.Sha256());
         return user;
